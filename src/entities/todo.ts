@@ -1,7 +1,6 @@
 // This class should be responsible for create a todo with the validated fields
 // and creating an id for it if it doesn't not exist
 
-import { Either, left, right } from "../shared/either";
 import { Entity } from "./common/entity";
 
 export type TodoProps = {
@@ -14,15 +13,15 @@ export class Todo extends Entity<TodoProps> {
     super(props, id);
   }
 
-  static build(props: TodoProps, id?: string): Either<Error, Todo> {
+  static build(props: TodoProps, id?: string): Todo {
     if (!props.description) {
-      return left(new Error("description field is required)"));
+      throw new Error("description field is required)");
     }
 
     props.done = props.done || false;
 
     const todo = new Todo(props, id);
 
-    return right(todo);
+    return todo;
   }
 }

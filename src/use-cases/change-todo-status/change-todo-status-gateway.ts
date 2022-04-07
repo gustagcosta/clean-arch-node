@@ -1,6 +1,5 @@
-import { Todo } from "../../entities/todo";
+import { ChangeTodoStatusInputModel } from "./change-todo-status-interactor";
 
-export default interface ChangeTodoStatusGateway {
-  findById(id: string): Promise<Todo>;
-  update(todo: Todo): Promise<void>;
+export interface ChangeTodoStatusGateway {
+  update(changeTodoStatusInputModel: ChangeTodoStatusInputModel): Promise<void>;
 }

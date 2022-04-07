@@ -7,16 +7,9 @@ describe("Todo entity tests", () => {
       done: false
     };
 
-    const todoOrError = Todo.build(todoProps);
+    const todo = Todo.build(todoProps);
 
-    if (todoOrError.isLeft()) {
-      throw new Error(todoOrError.value.message);
-    }
-
-    if (todoOrError.isRight()) {
-      expect(todoOrError.value).toBeTruthy();
-      expect(todoOrError.value.id).toBeTruthy();
-    }
+    expect(todo).toBeTruthy();
   });
 
   it("should be able to create a new todo without done field", () => {
@@ -24,15 +17,9 @@ describe("Todo entity tests", () => {
       description: "a todo test"
     };
 
-    const todoOrError = Todo.build(todoProps);
+    const todo = Todo.build(todoProps);
 
-    if (todoOrError.isLeft()) {
-      throw new Error(todoOrError.value.message);
-    }
-
-    if (todoOrError.isRight()) {
-      expect(todoOrError.value.props.done).toBeFalsy();
-    }
+    expect(todo.props.done).toBeFalsy();
   });
 
   it("should be able to create a new todo with id", () => {
@@ -42,15 +29,9 @@ describe("Todo entity tests", () => {
 
     const mockId = "dd-11-22";
 
-    const todoOrError = Todo.build(todoProps, mockId);
+    const todo = Todo.build(todoProps, mockId);
 
-    if (todoOrError.isLeft()) {
-      throw new Error(todoOrError.value.message);
-    }
-
-    if (todoOrError.isRight()) {
-      expect(todoOrError.value.id).toEqual(mockId);
-    }
+    expect(todo.id).toEqual(mockId);
   });
 
   it("should not be able to create a new todo without description", () => {
