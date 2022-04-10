@@ -3,7 +3,7 @@ import Interactor from "../common/interactor";
 import Presenter from "../common/presenter";
 import { DeleteTodoGateway } from "./delete-todo-gateway";
 
-interface DeleteTodoInteractorParams {
+export interface DeleteTodoInteractorParams {
   deleteTodoGateway: DeleteTodoGateway;
   deleteTodoPresenter: Presenter<void>;
 }

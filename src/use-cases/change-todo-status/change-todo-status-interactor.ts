@@ -1,3 +1,4 @@
+import { Todo } from "../../entities/todo";
 import Interactor from "../common/interactor";
 import Presenter from "../common/presenter";
 import { ChangeTodoStatusGateway } from "./change-todo-status-gateway";
@@ -7,7 +8,7 @@ export type ChangeTodoStatusInputModel = {
   id: string;
 };
 
-type ChangeTodoStatusInteractorParams = {
+export type ChangeTodoStatusInteractorParams = {
   changeTodoStatusGateway: ChangeTodoStatusGateway;
   changeTodoStatusPresenter: Presenter<void>;
 };
